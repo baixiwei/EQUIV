@@ -60,9 +60,6 @@ public class Fraction_NLE extends Module {
 	protected TrialData data;
 	protected Point lastClicked;
 	
-	// output
-	protected String aNamePref				= ""; 	// prefix to add to audio files created for each trial
-	
 	// display
 	Graphics2D g2;
 	protected int stimH;							// y-axis positioning of stimuli
@@ -78,20 +75,35 @@ public class Fraction_NLE extends Module {
 		version 	= v;
 		Fraction[] stimarray = new Fraction[]{};
 		if ( version.equals("A") ) {
-			stimarray = new Fraction[] { new Fraction(1,7), new Fraction(1,5), new Fraction(2,9), 
-					new Fraction(2,8), new Fraction(3,10), new Fraction(4,10),
-					new Fraction(4,8), new Fraction(3,5), new Fraction(2,3),
-					new Fraction(6,8), new Fraction(7,9), new Fraction(6,7) };
+			stimarray = new Fraction[] {
+					new Fraction(1,6), new Fraction(3,18), new Fraction(4,24), 
+					new Fraction(1,5), new Fraction(3,15), new Fraction(5,25), 
+					new Fraction(3,8), new Fraction(6,16), new Fraction(9,24), 
+					new Fraction(3,7), new Fraction(6,14), new Fraction(9,21), 
+					new Fraction(5,10), new Fraction(11,22), new Fraction(12,24), 
+					new Fraction(3,5), new Fraction(6,10), new Fraction(15,25), 
+					new Fraction(2,3), new Fraction(4,6), new Fraction(8,12), 
+					new Fraction(4,5), new Fraction(8,10), new Fraction(12,25), 
+					new Fraction(5,6), new Fraction(10,12), new Fraction(15,18) };
 		} else if ( version.equals("B") ) {
-			stimarray = new Fraction[] { new Fraction(1,6), new Fraction(1,9), new Fraction(2,10), 
-					new Fraction(2,7), new Fraction(2,6), new Fraction(2,5),
-					new Fraction(3,6), new Fraction(5,9), new Fraction(6,10),
-					new Fraction(3,4), new Fraction(4,5), new Fraction(7,8) };
+			stimarray = new Fraction[] {
+					new Fraction(1,8), new Fraction(2,16), new Fraction(3,24), 
+					new Fraction(1,7), new Fraction(2,14), new Fraction(3,21), 
+					new Fraction(1,3), new Fraction(6,18), new Fraction(8,24), 
+					new Fraction(2,5), new Fraction(6,15), new Fraction(10,25), 
+					new Fraction(1,2), new Fraction(2,4), new Fraction(9,18), 
+					new Fraction(5,8), new Fraction(10,16), new Fraction(15,24), 
+					new Fraction(3,4), new Fraction(6,8), new Fraction(9,12), 
+					new Fraction(6,7), new Fraction(12,14), new Fraction(18,21), 
+					new Fraction(7,8), new Fraction(14,16), new Fraction(21,24) };
 		} else {
 			System.out.println("Unrecognized version in Fraction_NLE constructor: "+version);
 		}
 		stimuli = new ArrayList<Fraction>(Arrays.asList(stimarray));
-		Collections.shuffle(stimuli);
+		// put the stimuli in an acceptable order
+		do {
+			Collections.shuffle(stimuli);
+		} while ( !checkStimuliOrder() );
 		// if in testing mode, select a subset of the stimuli
 		if ( mode=="testing" ) {
 			stimuli = stimuli.subList(1,4);
@@ -106,7 +118,8 @@ public class Fraction_NLE extends Module {
 		SimpleDateFormat format	= new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
 		Date now 				= new Date();
 		String fName 			= "NLE " + format.format(now) + ".txt";
-		Fraction_NLE c = new Fraction_NLE( "A", 1300, 700, fName, "NLE", "normal" );
+		String version			= new String[]{ "A", "B" }[ utils.Utils.getRand(0, 1) ];
+		Fraction_NLE c = new Fraction_NLE( version, 1300, 700, fName, "NLE", "normal" );
 		JFrame f 				= new JFrame();
 		f.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		f.setVisible(true);
@@ -117,6 +130,17 @@ public class Fraction_NLE extends Module {
 		c.start();
 	}
 
+	public boolean checkStimuliOrder() {
+		boolean order_ok = true;
+		for ( int i=0; i<stimuli.size()-1; i++ ) {
+			order_ok = order_ok &&
+				( stimuli.get(0).compareTo(stimuli.get(1))!=0 ) &&			// no successive equivalent fractions
+				( stimuli.get(0).num!=stimuli.get(1).num ) &&				// no successive same numerator fractions
+				( stimuli.get(0).den!=stimuli.get(1).den );					// no successive same denominator fractions
+		}
+		return order_ok;
+	}
+	
 	@Override
 	public void start() {
 		logLineToFile( mName );
