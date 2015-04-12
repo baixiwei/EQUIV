@@ -1,3 +1,6 @@
+// Fraction_NLE.java by David W. Braithwaite
+// Module for fraction number line estimation task in equivalent fractions project experiment 1
+
 package assessment;
 
 import java.awt.BorderLayout;
@@ -76,26 +79,38 @@ public class Fraction_NLE extends Module {
 		Fraction[] stimarray = new Fraction[]{};
 		if ( version.equals("A") ) {
 			stimarray = new Fraction[] {
-					new Fraction(1,6), new Fraction(3,18), new Fraction(4,24), 
-					new Fraction(1,5), new Fraction(3,15), new Fraction(5,25), 
-					new Fraction(3,8), new Fraction(6,16), new Fraction(9,24), 
-					new Fraction(3,7), new Fraction(6,14), new Fraction(9,21), 
-					new Fraction(5,10), new Fraction(11,22), new Fraction(12,24), 
-					new Fraction(3,5), new Fraction(6,10), new Fraction(15,25), 
-					new Fraction(2,3), new Fraction(4,6), new Fraction(8,12), 
-					new Fraction(4,5), new Fraction(8,10), new Fraction(12,25), 
-					new Fraction(5,6), new Fraction(10,12), new Fraction(15,18) };
+				// equivalent fractions
+				new Fraction(1,6), new Fraction(3,18), new Fraction(4,24), 
+				new Fraction(1,5), new Fraction(3,15), new Fraction(5,25), 
+				new Fraction(3,8), new Fraction(6,16), new Fraction(9,24), 
+				new Fraction(3,7), new Fraction(6,14), new Fraction(9,21), 
+				new Fraction(5,10), new Fraction(11,22), new Fraction(12,24), 
+				new Fraction(3,5), new Fraction(6,10), new Fraction(15,25), 
+				new Fraction(2,3), new Fraction(4,6), new Fraction(8,12), 
+				new Fraction(4,5), new Fraction(8,10), new Fraction(12,25), 
+				new Fraction(5,6), new Fraction(10,12), new Fraction(15,18),
+				// benchmark fractions used in comparison task & not included above
+				new Fraction(2,7), new Fraction(2,6), new Fraction(5,9),
+				new Fraction(6,9), new Fraction(5,7), new Fraction(6,8),
+				new Fraction(10,11), new Fraction(12,13)
+			};
 		} else if ( version.equals("B") ) {
 			stimarray = new Fraction[] {
-					new Fraction(1,8), new Fraction(2,16), new Fraction(3,24), 
-					new Fraction(1,7), new Fraction(2,14), new Fraction(3,21), 
-					new Fraction(1,3), new Fraction(6,18), new Fraction(8,24), 
-					new Fraction(2,5), new Fraction(6,15), new Fraction(10,25), 
-					new Fraction(1,2), new Fraction(2,4), new Fraction(9,18), 
-					new Fraction(5,8), new Fraction(10,16), new Fraction(15,24), 
-					new Fraction(3,4), new Fraction(6,8), new Fraction(9,12), 
-					new Fraction(6,7), new Fraction(12,14), new Fraction(18,21), 
-					new Fraction(7,8), new Fraction(14,16), new Fraction(21,24) };
+				// equivalent fractions
+				new Fraction(1,8), new Fraction(2,16), new Fraction(3,24), 
+				new Fraction(1,7), new Fraction(2,14), new Fraction(3,21), 
+				new Fraction(1,3), new Fraction(6,18), new Fraction(8,24), 
+				new Fraction(2,5), new Fraction(6,15), new Fraction(10,25), 
+				new Fraction(1,2), new Fraction(2,4), new Fraction(9,18), 
+				new Fraction(5,8), new Fraction(10,16), new Fraction(15,24), 
+				new Fraction(3,4), new Fraction(6,8), new Fraction(9,12), 
+				new Fraction(6,7), new Fraction(12,14), new Fraction(18,21), 
+				new Fraction(7,8), new Fraction(14,16), new Fraction(21,24),
+				// benchmark fractions used in comparison task & not included above
+				new Fraction(1,5), new Fraction(1,4), new Fraction(3,7),
+				new Fraction(3,5), new Fraction(7,9), new Fraction(8,9),
+				new Fraction(14,15), new Fraction(20,21)
+			};
 		} else {
 			System.out.println("Unrecognized version in Fraction_NLE constructor: "+version);
 		}

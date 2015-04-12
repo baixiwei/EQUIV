@@ -1,3 +1,16 @@
+// Experiment_1.java by David W. Braithwaite
+// Module container for equivalent fractions project experiment 1
+
+// TBD:
+// general experiment:
+	// handle grade level/condition assignment
+	// separate NLE and comparison tasks into blocks to reduce fatigue?
+// number line estimation:
+	// add benchmark fractions to NLE task
+// magnitude comparison:
+	// visual feedback for which fraction was selected
+	// pattern mask after brief presentation of stimuli?
+
 package experiment;
 
 import java.awt.BorderLayout;

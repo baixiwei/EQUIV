@@ -1,11 +1,5 @@
 // Comparison.java by David W. Braithwaite
-// Module for fraction magnitude comparison task
-
-// TBD:
-// add benchmark fractions to NLE task
-// pattern mask after brief presentation of stimuli?
-// handle grade level/condition assignment
-// visual feedback for which fraction was selected
+// Module for fraction magnitude comparison task in equivalent fractions project experiment 1
 
 package assessment;
 
