@@ -105,7 +105,7 @@ public class Fraction_NLE extends Module {
 			Collections.shuffle(stimuli);
 		} while ( !checkStimuliOrder() );
 		// if in testing mode, select a subset of the stimuli
-		if ( mode=="testing" ) {
+		if ( mode.equals("testing") ) {
 			stimuli = stimuli.subList(1,4);
 		}
 		// set variables to control graphical display based on window size

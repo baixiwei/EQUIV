@@ -2,9 +2,10 @@
 // Module for fraction magnitude comparison task
 
 // TBD:
-// create combined experiment
 // add benchmark fractions to NLE task
 // pattern mask after brief presentation of stimuli?
+// handle grade level/condition assignment
+// visual feedback for which fraction was selected
 
 package assessment;
 
@@ -165,7 +166,7 @@ public class Comparison extends Module {
 			trials.get(i).trialIdx = i;
 		}
 		// if in testing mode, only use the first few trials
-		if ( mode=="testing" ) {
+		if ( mode.equals("testing") ) {
 			trials= trials.subList(1,4);
 		}
 	}
