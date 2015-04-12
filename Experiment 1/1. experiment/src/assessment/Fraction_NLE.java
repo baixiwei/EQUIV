@@ -134,9 +134,9 @@ public class Fraction_NLE extends Module {
 		boolean order_ok = true;
 		for ( int i=0; i<stimuli.size()-1; i++ ) {
 			order_ok = order_ok &&
-				( stimuli.get(0).compareTo(stimuli.get(1))!=0 ) &&			// no successive equivalent fractions
-				( stimuli.get(0).num!=stimuli.get(1).num ) &&				// no successive same numerator fractions
-				( stimuli.get(0).den!=stimuli.get(1).den );					// no successive same denominator fractions
+				( stimuli.get(i).compareTo(stimuli.get(i+1))!=0 ) &&	// no successive equivalent fractions
+				( stimuli.get(i).num!=stimuli.get(i+1).num ) &&			// no successive same numerator fractions
+				( stimuli.get(i).den!=stimuli.get(i+1).den );			// no successive same denominator fractions
 		}
 		return order_ok;
 	}
